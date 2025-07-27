@@ -6,8 +6,15 @@ import 'package:flutter_application_3/custome/ytshorts.dart';
 import 'package:flutter_application_3/routs/app_routs.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatelessWidget {
+  Future<void> logout() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.clear(); 
+   prefs.remove('token');
+  Get.offNamed(AppRouts.login_screen); // Redirect to login screen
+}
   const HomePage({super.key});
 
   @override
@@ -34,7 +41,27 @@ class HomePage extends StatelessWidget {
               Get.toNamed(AppRouts.notification);
             },
             child: Icon(Icons.notifications,color: Appcolor.textcolor,size: 30,)),
-          Icon(Icons.search, color: Appcolor.textcolor, size: 30)],
+          Icon(Icons.search, color: Appcolor.textcolor, size: 30),
+          IconButton(
+                onPressed: () {
+                  Get.defaultDialog(
+                    title: "Logout",
+                    middleText: "Are you sure you want to logout?",
+                    textConfirm: "Yes",
+                    textCancel: "No",
+                    confirmTextColor: Colors.white,
+                    onConfirm: () {
+                      logout();
+                    },
+                  );
+                },
+                icon: Icon(Icons.more_vert),
+                iconSize: 30,
+                color: Colors.white,
+              ),
+          
+          ],
+          
       ),
 
       body: 

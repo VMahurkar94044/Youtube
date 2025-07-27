@@ -5,6 +5,7 @@ import 'package:flutter_application_3/modle/loginresponse.dart';
 import 'package:flutter_application_3/routs/app_routs.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController
 {
@@ -39,9 +40,12 @@ class LoginController extends GetxController
         if(response.statusCode == 200)
         {
           final data = jsonDecode(response.body);
-          final logindata = LoginResponse.fromJson(data);
+          final loginData = LoginResponse.fromJson(data);
 
           Get.snackbar("sucess", "login successfully", backgroundColor: Colors.green);
+
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setString('token', loginData.token ?? "");
           Get.offNamed(AppRouts.tabs);
 
         }
