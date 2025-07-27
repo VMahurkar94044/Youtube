@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/color/app_color.dart';
 import 'package:flutter_application_3/controller/eye_controller.dart';
+import 'package:flutter_application_3/controller/login_controller.dart';
 import 'package:flutter_application_3/routs/app_routs.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -10,6 +11,7 @@ class LoginScreen extends StatelessWidget {
 
   //final EyeController eyec = EyeController();
   final eyec = Get.put(EyeController());
+  final loginc = Get.put(LoginController());
 
    LoginScreen({super.key});
 
@@ -25,15 +27,16 @@ class LoginScreen extends StatelessWidget {
 
   //bool eye = true;
 
-  final TextEditingController emailCtrl = TextEditingController();
-  final TextEditingController passCtrl = TextEditingController();
+  //final TextEditingController emailCtrl = TextEditingController();
+  //final TextEditingController passCtrl = TextEditingController();
 
 
   void _login()
   {
     if(_formkey.currentState!.validate())
     {
-      Navigator.pushReplacementNamed(context, AppRouts.tabs);
+      loginc.loginUser();
+      //Navigator.pushReplacementNamed(context, AppRouts.tabs);
       //Get.offNamed(AppRouts.tabs);
 
     }
@@ -77,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20,right: 20),
                 child: 
                 TextFormField(
-                  controller: emailCtrl,
+                  controller: loginc.emailCtrl,
                   style: 
                   TextStyle(color: Appcolor.textcolor),
                   decoration: InputDecoration(
@@ -109,7 +112,7 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 20,right: 20),
                 child: TextFormField(
-                  controller: passCtrl,
+                  controller: loginc.password,
                   obscureText: eyec.eye.value,
                   style: TextStyle(color: Appcolor.textcolor),
                   decoration: InputDecoration(
