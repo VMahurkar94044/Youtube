@@ -22,4 +22,8 @@ class Tabcontroller extends GetxController
     
     selectedIndex.value = index;
   }
+
+  int get selectedindex{
+      return selectedIndex.value;
+    }
 }

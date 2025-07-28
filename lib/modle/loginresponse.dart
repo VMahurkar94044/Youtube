@@ -29,8 +29,8 @@ class User {
   String? email;
   String? role;
   String? contact;
-  Null? address;
-  Null? gender;
+  String? address;
+  String? gender;
   String? createdAt;
   String? updatedAt;
 

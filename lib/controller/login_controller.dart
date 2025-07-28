@@ -52,7 +52,7 @@ class LoginController extends GetxController
         else
         {
           final error = jsonDecode(response.body);
-          Get.snackbar("Error", error["message"] ?? "Unknown error",backgroundColor: Colors.red);
+          Get.snackbar("Login Failed", error["message"] ?? "Unknown error",backgroundColor: Colors.red);
         }
     }
 

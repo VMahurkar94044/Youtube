@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/color/app_color.dart';
+//import 'package:flutter_application_3/controller/tabs_controller.dart';
 import 'package:flutter_application_3/custome/channelcircle.dart';
 import 'package:flutter_application_3/custome/ytContainer.dart';
 import 'package:flutter_application_3/custome/ytshorts.dart';
@@ -9,16 +10,26 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatelessWidget {
+
+
   Future<void> logout() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.clear(); 
    prefs.remove('token');
   Get.offNamed(AppRouts.login_screen); // Redirect to login screen
 }
-  const HomePage({super.key});
+
+
+ 
+
+
+
+   HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    
     final screenheight = MediaQuery.of(context).size.height;
     final screenwidth = MediaQuery.of(context).size.width;
 
