@@ -3,6 +3,7 @@ import 'package:flutter_application_3/screens/createaccount.dart';
 import 'package:flutter_application_3/screens/forgotpassscreen.dart';
 import 'package:flutter_application_3/screens/library.dart';
 import 'package:flutter_application_3/screens/login_screen.dart';
+//import 'package:flutter_application_3/screens/news_screen.dart';
 import 'package:flutter_application_3/screens/notification.dart';
 import 'package:flutter_application_3/screens/shorts.dart';
 import 'package:flutter_application_3/screens/subscriptions.dart';

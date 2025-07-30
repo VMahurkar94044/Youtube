@@ -11,6 +11,7 @@ class LoginController extends GetxController
 {
 
   var isloading = false.obs;
+  
 
   final emailCtrl = TextEditingController();
   final password = TextEditingController();
