@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/screens/createaccount.dart';
+import 'package:flutter_application_3/screens/dummyscreen.dart';
 import 'package:flutter_application_3/screens/forgotpassscreen.dart';
 import 'package:flutter_application_3/screens/library.dart';
 import 'package:flutter_application_3/screens/login_screen.dart';
@@ -10,22 +11,31 @@ import 'package:flutter_application_3/screens/subscriptions.dart';
 import 'package:flutter_application_3/screens/tabs.dart';
 import 'package:flutter_application_3/screens/video_play.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure bindings initialized
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? token = prefs.getString('token');
+  runApp(MyApp(token: token));
 
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String? token;
+  const MyApp({super.key, required this.token});
+  
+  
 
   
   @override
   Widget build(BuildContext context) {
+    
     return GetMaterialApp(
 
-      initialRoute: "/",
+      initialRoute: token == null ? "login_screen" : "/tabs",
       routes: {
         "/" : (context) => LoginScreen(),
         "/login_screen" : (context) => LoginScreen(),
